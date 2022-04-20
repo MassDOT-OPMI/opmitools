@@ -6,6 +6,7 @@
 \alias{remove_unused_shapes}
 \alias{remove_unused_routes}
 \alias{remove_unused_service}
+\alias{gtfs_remove_all}
 \title{GTFS cleaning functions}
 \usage{
 remove_unused_stops(gtfs, retain_stops = FALSE)
@@ -15,6 +16,15 @@ remove_unused_shapes(gtfs, retain_shapes = FALSE)
 remove_unused_routes(gtfs, retain_routes = FALSE)
 
 remove_unused_service(gtfs, retain_service = FALSE)
+
+gtfs_remove_all(
+  gtfs,
+  retain_all = FALSE,
+  retain_stops = FALSE,
+  retain_shapes = FALSE,
+  retain_routes = FALSE,
+  retain_service = FALSE
+)
 }
 \arguments{
 \item{gtfs}{A GTFS file stored as a list}
@@ -28,9 +38,35 @@ remove_unused_service(gtfs, retain_service = FALSE)
 \item{retain_service}{Whether to retain the unused \code{service_id}s (in \code{gtfs$calendar_unused})}
 }
 \value{
-A GTFS file stored as a list, without unused stops.
+A GTFS file stored as a list. If \code{gtfs_remove_all()} is called, stops,
+shapes, routes, and \code{service_id}s that are not
+used by the trips.txt or stop_times.txt files will be removed.
+Other functions pertain to specific files.
 }
 \description{
-GTFS cleaning functions
+Functions to remove items from a GTFS if they are not used in either the
+trips (for routes, shapes, and \code{service_id}s) or stop_times (for stops)
+file.
+}
+\examples{
+\dontrun{
+remove_unused_stops(gtfs)
+}
+}
+\seealso{
+Other gtfs cleaning functions: 
+\code{\link{gtfs_removal_check}()}
+
+Other gtfs cleaning functions: 
+\code{\link{gtfs_removal_check}()}
+
+Other gtfs cleaning functions: 
+\code{\link{gtfs_removal_check}()}
+
+Other gtfs cleaning functions: 
+\code{\link{gtfs_removal_check}()}
+
+Other gtfs cleaning functions: 
+\code{\link{gtfs_removal_check}()}
 }
 \concept{gtfs cleaning functions}
