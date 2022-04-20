@@ -225,6 +225,7 @@ remove_unused_service <- function(gtfs, retain_service = FALSE) {
 
 #' @rdname gtfs_remove_unused
 #' @family gtfs cleaning functions
+#' @param retain_all Whether to retain removed components
 gtfs_remove_all <- function(gtfs,
                             retain_all = FALSE,
                             retain_stops = FALSE,

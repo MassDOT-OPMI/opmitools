@@ -36,6 +36,8 @@ gtfs_remove_all(
 \item{retain_routes}{Whether to retain the unused routes (in \code{gtfs$routes_unused})}
 
 \item{retain_service}{Whether to retain the unused \code{service_id}s (in \code{gtfs$calendar_unused})}
+
+\item{retain_all}{Whether to retain removed components}
 }
 \value{
 A GTFS file stored as a list. If \code{gtfs_remove_all()} is called, stops,
