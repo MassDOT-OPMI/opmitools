@@ -22,7 +22,7 @@ opmi_colors <-
 #' A function to provide hex values for colors in the OPMI color palette
 #' or colors of MBTA services.
 #'
-#' @param ... One, or multiple colors from the OPMI color palette
+#' @param ... One or multiple colors from the OPMI color palette
 #' ("orange", "petrolblue", "coralred", "seafoam", "skyblue", "deeppurple",
 #' "cream", or "midgrey")
 #' or MBTA color scheme
@@ -53,25 +53,39 @@ opmi_palettes <-
        diverging2 = opmi_cols("seafoam", "coralred"),
        rt = opmi_cols("rl", "ol", "gl", "bl"))
 
+
+
+
+#' OPMI Palette Chooser
+#'
+#' Creates a function that can be used by `scale_fill_opmi` and `scale_color_opmi`.
+#' Can also be used to create manual color/fill palettes for `scale_color_manual`
+#' and `scale_fill_manual`.
+#'
+#' @param palette One of "main", "diverging", "diverging2", or "rt"
+#' @param reverse Logical, whether to reverse palette
+#' @param discrete Logical, whether palette is for discrete scale
+#' @param mono Logical, whether to use a single-color palette
+#' @param monocol If `mono` = TRUE, which color to use for palette
+#' @param ... Additional arguments passed to `colorRampPalette`
+#'
+#' @return A function that can be used by `scale_fill_opmi` and `scale_color_opmi`
+#' @export
+#'
 opmi_pal <-
   function(palette = "main",
            reverse = FALSE,
            discrete = TRUE,
-           diverging = (palette %in% c("diverging", "diverging2")),
            mono = FALSE,
            monocol = "orange",
            ...) {
 
+    diverging <- palette %in% c("diverging", "diverging2")
+
+
     if(!palette %in% names(opmi_palettes)) {
       stop(paste0("Must select one of '",
                   paste(names(opmi_palettes), collapse = "', '"),
-                  "'."))
-    }
-
-    if (diverging & !(palette %in% c("diverging", "diverging2"))) {
-      used_pal <- palette
-      stop(paste0("Must select diverging palette, either 'diverging' or 'diverging2'.\n  * You've supplied palette: '",
-                  palette,
                   "'."))
     }
 

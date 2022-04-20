@@ -7,7 +7,7 @@
 opmi_cols(...)
 }
 \arguments{
-\item{...}{One, or multiple colors from the OPMI color palette
+\item{...}{One or multiple colors from the OPMI color palette
 ("orange", "petrolblue", "coralred", "seafoam", "skyblue", "deeppurple",
 "cream", or "midgrey")
 or MBTA color scheme
