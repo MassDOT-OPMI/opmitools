@@ -127,6 +127,16 @@ opmi_pal <-
   }
 
 
+
+
+#' OPMI Color Scales
+#'
+#' @inheritParams opmi_pal
+#'
+#' @return A scale that can be used in ggplots
+#' @export
+#'
+#' @name scale_fill_opmi
 scale_fill_opmi <- function(palette = "main", discrete = TRUE, reverse = FALSE,
                             diverging = (palette %in% c("diverging", "diverging2")),
                             mono = FALSE, monocol = "orange",
@@ -152,8 +162,7 @@ scale_fill_opmi <- function(palette = "main", discrete = TRUE, reverse = FALSE,
 }
 
 
-# color function
-
+#' @rdname scale_fill_opmi
 scale_color_opmi <- function(palette = "main", discrete = TRUE, reverse = FALSE,
                              diverging = (palette %in% c("diverging", "diverging2")),
                              mono = FALSE, monocol = "orange",
