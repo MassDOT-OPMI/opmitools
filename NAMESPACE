@@ -2,6 +2,7 @@
 
 export("%>%")
 export(gtfs_agreement_check)
+export(gtfs_calendar_info)
 export(gtfs_merge)
 export(gtfs_removal_check)
 export(read_mbta_gtfs)
