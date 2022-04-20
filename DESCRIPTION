@@ -1,5 +1,5 @@
 Package: opmitools
-Title: Functions and Data for MBTA/MassDOT OPMI.
+Title: Functions and Data for OPMI
 Version: 0.0.0.9000
 Authors@R: 
     person("Karl", "Meakin", , "kmeakin@mbta.com", role = c("aut", "cre"))
