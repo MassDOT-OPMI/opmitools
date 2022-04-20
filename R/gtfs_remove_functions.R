@@ -1,13 +1,23 @@
 #' GTFS cleaning functions
 #'
+#' Functions to remove items from a GTFS if they are not used in either the
+#' trips (for routes, shapes, and `service_id`s) or stop_times (for stops)
+#' file.
+#'
 #' @param gtfs A GTFS file stored as a list
 #' @param retain_stops Whether to retain the unused stops (in `gtfs$stops_unused`)
 #' @param retain_shapes Whether to retain the unused shapes (in `gtfs$shapes_unused`)
 #' @param retain_routes Whether to retain the unused routes (in `gtfs$routes_unused`)
 #' @param retain_service Whether to retain the unused `service_id`s (in `gtfs$calendar_unused`)
 #'
-#' @return A GTFS file stored as a list, without unused stops.
+#' @return A GTFS file stored as a list. If `gtfs_remove_all()` is called, stops,
+#' shapes, routes, and `service_id`s that are not
+#' used by the trips.txt or stop_times.txt files will be removed.
+#' Other functions pertain to specific files.
 #' @export
+#' @examples \dontrun{
+#' remove_unused_stops(gtfs)
+#' }
 #' @family gtfs cleaning functions
 #' @name gtfs_remove_unused
 remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
@@ -213,6 +223,31 @@ remove_unused_service <- function(gtfs, retain_service = FALSE) {
   }
 
   # return gtfs
+  gtfs
+
+}
+
+#' @rdname gtfs_remove_unused
+#' @family gtfs cleaning functions
+gtfs_remove_all <- function(gtfs,
+                            retain_all = FALSE,
+                            retain_stops = FALSE,
+                            retain_shapes = FALSE,
+                            retain_routes = FALSE,
+                            retain_service = FALSE) {
+
+  if (retain_all) {
+    retain_shapes <- TRUE
+    retain_stops <- TRUE
+    retain_routes <- TRUE
+    retain_service <- TRUE
+  }
+
+  gtfs <- remove_unused_stops(gtfs, retain_stops = retain_stops)
+  gtfs <- remove_unused_shapes(gtfs, retain_shapes = retain_shapes)
+  gtfs <- remove_unused_routes(gtfs, retain_routes = retain_routes)
+  gtfs <- remove_unused_service(gtfs, retain_service = retain_service)
+
   gtfs
 
 }
