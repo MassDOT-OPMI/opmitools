@@ -50,22 +50,10 @@ file.
 }
 \examples{
 \dontrun{
-remove_unused_stops(gtfs)
+gtfs_remove_all(gtfs)
 }
 }
 \seealso{
-Other gtfs cleaning functions: 
-\code{\link{gtfs_removal_check}()}
-
-Other gtfs cleaning functions: 
-\code{\link{gtfs_removal_check}()}
-
-Other gtfs cleaning functions: 
-\code{\link{gtfs_removal_check}()}
-
-Other gtfs cleaning functions: 
-\code{\link{gtfs_removal_check}()}
-
 Other gtfs cleaning functions: 
 \code{\link{gtfs_removal_check}()}
 }

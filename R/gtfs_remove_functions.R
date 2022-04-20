@@ -16,9 +16,8 @@
 #' Other functions pertain to specific files.
 #' @export
 #' @examples \dontrun{
-#' remove_unused_stops(gtfs)
+#' gtfs_remove_all(gtfs)
 #' }
-#' @family gtfs cleaning functions
 #' @name gtfs_remove_unused
 remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
 
@@ -75,7 +74,6 @@ remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
 
 
 #' @rdname gtfs_remove_unused
-#' @family gtfs cleaning functions
 remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
 
 
@@ -129,7 +127,6 @@ remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
 }
 
 #' @rdname gtfs_remove_unused
-#' @family gtfs cleaning functions
 remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 
   # list of route_ids in trips with trip count
@@ -175,7 +172,6 @@ remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 
 
 #' @rdname gtfs_remove_unused
-#' @family gtfs cleaning functions
 remove_unused_service <- function(gtfs, retain_service = FALSE) {
 
   # get count of trips by service_id
