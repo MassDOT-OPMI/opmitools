@@ -2,8 +2,5 @@
 
 export("%>%")
 export(read_mbta_gtfs)
-export(remove_unused_routes)
-export(remove_unused_service)
-export(remove_unused_shapes)
 export(remove_unused_stops)
 importFrom(magrittr,"%>%")

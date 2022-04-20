@@ -2,10 +2,14 @@
 #'
 #' @param gtfs A GTFS file stored as a list
 #' @param retain_stops Whether to retain the unused stops (in `gtfs$stops_unused`)
+#' @param retain_shapes Whether to retain the unused shapes (in `gtfs$shapes_unused`)
+#' @param retain_routes Whether to retain the unused routes (in `gtfs$routes_unused`)
+#' @param retain_service Whether to retain the unused `service_id`s (in `gtfs$calendar_unused`)
 #'
 #' @return A GTFS file stored as a list, without unused stops.
 #' @export
 #' @family gtfs cleaning functions
+#' @name gtfs_remove_unused
 remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
 
   # summarize number of trips by stop
@@ -59,13 +63,8 @@ remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
 }
 
 
-#' GTFS cleaning functions
-#'
-#' @param gtfs A GTFS file stored as a list
-#' @param retain_shapes Whether to retain the unused shapes (in `gtfs$shapes_unused`)
-#'
-#' @return A GTFS file stored as a list, without unused shapes.
-#' @export
+
+#' @rdname gtfs_remove_unused
 #' @family gtfs cleaning functions
 remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
 
@@ -119,13 +118,7 @@ remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
   gtfs
 }
 
-#' GTFS cleaning functions
-#'
-#' @param gtfs A GTFS file stored as a list
-#' @param retain_routes Whether to retain the unused routes (in `gtfs$routes_unused`)
-#'
-#' @return A GTFS file stored as a list, without unused routes.
-#' @export
+#' @rdname gtfs_remove_unused
 #' @family gtfs cleaning functions
 remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 
@@ -171,13 +164,7 @@ remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 }
 
 
-#' GTFS cleaning functions
-#'
-#' @param gtfs A GTFS file stored as a list
-#' @param retain_service Whether to retain the unused `service_id`s (in `gtfs$calendar_unused`)
-#'
-#' @return A GTFS file stored as a list, without unused `service_id`s
-#' @export
+#' @rdname gtfs_remove_unused
 #' @family gtfs cleaning functions
 remove_unused_service <- function(gtfs, retain_service = FALSE) {
 
