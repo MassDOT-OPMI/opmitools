@@ -10,14 +10,11 @@
 
 1.  Functions for cleaning and merging GTFS files (building on
     [`tidytransit`](https://github.com/r-transit/tidytransit))
-
 2.  Presenting data consistent with OPMI’s Office Theme (building on
     [`ggplot2`](https://ggplot2.tidyverse.org/))
-
     1.  This part of the package draws on “[Creating corporate colour
         palettes for
         ggplot2](https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2)”
-
 3.  Access to common reference tables
 
 ## Installation
