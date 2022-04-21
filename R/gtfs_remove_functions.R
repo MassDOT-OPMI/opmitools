@@ -19,6 +19,7 @@
 #' gtfs_remove_all(gtfs)
 #' }
 #' @name gtfs_remove_unused
+#' @export
 remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
 
   # summarize number of trips by stop
@@ -74,6 +75,7 @@ remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
 
 
 #' @rdname gtfs_remove_unused
+#' @export
 remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
 
 
@@ -127,6 +129,7 @@ remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
 }
 
 #' @rdname gtfs_remove_unused
+#' @export
 remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 
   # list of route_ids in trips with trip count
@@ -172,6 +175,7 @@ remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 
 
 #' @rdname gtfs_remove_unused
+#' @export
 remove_unused_service <- function(gtfs, retain_service = FALSE) {
 
   # get count of trips by service_id
@@ -226,6 +230,7 @@ remove_unused_service <- function(gtfs, retain_service = FALSE) {
 #' @rdname gtfs_remove_unused
 #' @family gtfs cleaning functions
 #' @param retain_all Whether to retain removed components
+#' @export
 gtfs_remove_all <- function(gtfs,
                             retain_all = FALSE,
                             retain_stops = FALSE,
