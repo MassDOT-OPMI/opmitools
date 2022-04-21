@@ -15,14 +15,14 @@ theme_opmi  <- function(base_size = 12,
                         base_font = "Open Sans",
                         base_family = "opensans") {
 
-  if (base_family %in% (font_families()) & !(base_family %in% c("sans", "serif", "mono"))) {
+  if (base_family %in% (sysfonts::font_families()) & !(base_family %in% c("sans", "serif", "mono"))) {
     # if font already loaded, just enable calling it to create theme
-    showtext_auto(enable = TRUE)
+    showtext::showtext_auto(enable = TRUE)
   } else if (!(base_family %in% c("sans", "serif", "mono"))) {
     # otherwise, load font
-    font_add_google(base_font, base_family)
+    sysfonts::font_add_google(base_font, base_family)
     # and enable calling font for duration of theme call
-    showtext_auto(enable = TRUE)
+    showtext::showtext_auto(enable = TRUE)
   }
 
   theme(rect = element_rect(color = opmi_cols("cream")),
