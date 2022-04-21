@@ -10,5 +10,6 @@ rt_ridership <-
   summarize(tot_ons = sum(average_ons))
 rt_ridership <-
   rt_ridership %>%
-  mutate(route_id = factor(route_id, levels = c("Red", "Orange", "Green", "Blue")))
+  mutate(route_id = factor(route_id, levels = c("Red", "Orange", "Green", "Blue"))) %>%
+  ungroup()
 usethis::use_data(rt_ridership, overwrite = TRUE)
