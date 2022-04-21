@@ -32,6 +32,8 @@ scale_color_opmi(
 
 \item{reverse}{Logical, whether to reverse palette}
 
+\item{diverging}{Does not need to be specified, inherits from \code{palette}}
+
 \item{mono}{Logical, whether to use a single-color palette}
 
 \item{monocol}{If \code{mono} = TRUE, which color to use for palette}

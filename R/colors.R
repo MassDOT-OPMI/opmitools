@@ -132,6 +132,7 @@ opmi_pal <-
 #' OPMI Color Scales
 #'
 #' @inheritParams opmi_pal
+#' @param diverging Does not need to be specified, inherits from `palette`
 #'
 #' @return A scale that can be used in ggplots
 #' @export
