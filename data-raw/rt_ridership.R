@@ -6,7 +6,7 @@ rt_csv <- read_csv("./data-raw/Line,_and_Stop.csv")
 
 rt_ridership <-
   rt_csv %>%
-  group_by(fall_yr = as.numeric(str_remove(season, "Fall ")), route_id, day_type_name) %>%
+  group_by(rating = season, route_id, day_type_name) %>%
   summarize(tot_ons = sum(average_ons))
 rt_ridership <-
   rt_ridership %>%
