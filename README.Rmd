@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+options(scipen = 999)
 ```
 
 # opmitools
@@ -33,3 +35,82 @@ You can install the development version of opmitools from [GitHub](https://githu
 # install.packages("devtools")
 devtools::install_github("kmeakinmbta/opmitools")
 ```
+
+And load/attach opmitools as you would any other package with:
+
+```{r}
+library(opmitools)
+```
+
+
+## Usage
+
+### GTFS Files
+
+Read the current MBTA GTFS from [mbta.com](https://www.mbta.com/) with:
+
+```{r}
+mbta_gtfs <- read_mbta_gtfs()
+```
+
+`read_mbta_gtfs()` is a wrapper for `tidytransit::read_gtfs()`. It stores the individual tables in a list and enforces column types as specified in the GTFS standard.
+
+For some downstream trip planners and other applications, it is useful/necessary to remove all extraneous stops, shapes, routes, and `service_id`s (i.e., those that are not used in the either `trips.txt` or `stop_times.txt`). You can check for extraneous components with `gtfs_removal_check()`:
+
+```{r}
+gtfs_removal_check(mbta_gtfs)
+```
+
+And remove those components with `gtfs_remove_all()`:
+
+```{r}
+route_count_pre <- length(mbta_gtfs$routes$route_id)
+mbta_gtfs <- gtfs_remove_all(mbta_gtfs)
+route_count_post <- length(mbta_gtfs$routes$route_id)
+paste0("Route count prior to removal: ", route_count_pre)
+paste0("Route count after removal: ", route_count_post)
+```
+
+
+Other use cases might include getting some useful information out of the `calendar.txt` file:
+
+```{r}
+mbta_calendar_info <- gtfs_calendar_info(mbta_gtfs)
+head(mbta_calendar_info)
+```
+
+Note that `opmitools` is not yet capable of handling GTFS-Pathways -- it is only set up to handle the required GTFS files used by the MBTA: agency, calendar, routes, shapes, stop_times, stops, and trips. While some functions will work without `tidytransit`, it is recommended to install and attach `tidytransit` in conjunction with `opmitools`.
+
+### Plotting
+
+`opmitools` contains several convenience functions for making "OPMI-themed" plots. As an example, we can plot information from `rt_ridership`, which is included in the package.
+
+The following code creates a simple ggplot showing fall average weekday ridership on rapid transit.
+
+```{r}
+library(tidyverse) # load & attach tidyverse for data wrangling with dplyr and plotting with ggplot2
+
+(ridership_plot <-
+    rt_ridership %>%  
+    filter(day_type_name == "weekday") %>% 
+    ggplot(aes(x = rating, y = tot_ons, fill = route_id)) +
+    geom_col(position = position_dodge()))
+```
+
+Then, we could add the OPMI theme with `theme_opmi()`:
+
+```{r}
+(ridership_plot <-
+   ridership_plot +
+   labs(x = "Rating", y = "Average\nWeekday\nBoardings") +
+   theme_opmi())
+```
+
+And use colors that make sense with `scale_fill_opmi()`:
+
+```{r}
+ridership_plot +
+  scale_fill_opmi(palette = "rt", guide = "none")
+```
+
+
