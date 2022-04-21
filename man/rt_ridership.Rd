@@ -7,7 +7,7 @@
 \format{
 A data frame with 36 rows and 4 columns.
 \describe{
-\item{fall_yr}{Numeric, applicable fall rating}
+\item{rating}{character, Applicable fall rating}
 \item{route_id}{Factor, Route ID of service}
 \item{day_type_name}{Character, day type of service}
 \item{tot_ons}{Numeric, average total boardings of service}

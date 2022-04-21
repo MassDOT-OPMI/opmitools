@@ -19,6 +19,8 @@ Imports:
     purrr,
     rlang,
     showtext,
+    stringr,
+    sysfonts,
     tibble,
     tidyr,
     tidytransit
