@@ -8,7 +8,7 @@
 A data frame with 4183 rows and 8 variables:
 \describe{
 \item{baz}{BAZ ID}
-\itme{baz_name}{name of BAZ}
+\item{baz_name}{name of BAZ}
 \item{lat}{Latitude}
 \item{lon}{Longitude}
 \item{blkgrp}{Block Group GEOID}
