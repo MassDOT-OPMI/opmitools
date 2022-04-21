@@ -41,62 +41,6 @@ Read the current MBTA GTFS from [mbta.com](https://www.mbta.com/) with:
 
 ``` r
 mbta_gtfs <- read_mbta_gtfs()
-#> File downloaded to C:\Users\meakink\AppData\Local\Temp\Rtmp6bDri4\gtfs322479da5b13.zip.
-#> Unzipped the following files to C:\Users\meakink\AppData\Local\Temp\Rtmp6bDri4/gtfsio:
-#>   * agency.txt
-#>   * calendar.txt
-#>   * calendar_attributes.txt
-#>   * calendar_dates.txt
-#>   * checkpoints.txt
-#>   * directions.txt
-#>   * facilities.txt
-#>   * facilities_properties.txt
-#>   * facilities_properties_definitions.txt
-#>   * feed_info.txt
-#>   * levels.txt
-#>   * lines.txt
-#>   * linked_datasets.txt
-#>   * multi_route_trips.txt
-#>   * pathways.txt
-#>   * route_patterns.txt
-#>   * routes.txt
-#>   * shapes.txt
-#>   * stop_times.txt
-#>   * stops.txt
-#>   * transfers.txt
-#>   * trips.txt
-#> Reading agency.txt
-#> Reading calendar.txt
-#> Reading calendar_attributes.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading calendar_dates.txt
-#> Reading checkpoints.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading directions.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading facilities.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading facilities_properties.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading facilities_properties_definitions.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading feed_info.txt
-#> Reading levels.txt
-#> Reading lines.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading linked_datasets.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading multi_route_trips.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading pathways.txt
-#> Reading route_patterns.txt
-#>   - File undocumented. Trying to read it as a csv.
-#> Reading routes.txt
-#> Reading shapes.txt
-#> Reading stop_times.txt
-#> Reading stops.txt
-#> Reading transfers.txt
-#> Reading trips.txt
 ```
 
 `read_mbta_gtfs()` is a wrapper for `tidytransit::read_gtfs()`. It
@@ -195,14 +139,6 @@ ridership on rapid transit.
 
 ``` r
 library(tidyverse) # load & attach tidyverse for data wrangling with dplyr and plotting with ggplot2
-#> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-#> v ggplot2 3.3.5     v purrr   0.3.4
-#> v tibble  3.1.6     v dplyr   1.0.8
-#> v tidyr   1.2.0     v stringr 1.4.0
-#> v readr   2.1.2     v forcats 0.5.1
-#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
 
 (ridership_plot <-
     rt_ridership %>%  

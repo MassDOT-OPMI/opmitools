@@ -49,7 +49,7 @@ library(opmitools)
 
 Read the current MBTA GTFS from [mbta.com](https://www.mbta.com/) with:
 
-```{r}
+```{r, message=FALSE}
 mbta_gtfs <- read_mbta_gtfs()
 ```
 
@@ -87,7 +87,7 @@ Note that `opmitools` is not yet capable of handling GTFS-Pathways -- it is only
 
 The following code creates a simple ggplot showing fall average weekday ridership on rapid transit.
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse) # load & attach tidyverse for data wrangling with dplyr and plotting with ggplot2
 
 (ridership_plot <-
