@@ -13,13 +13,13 @@ gtfs_calendar_info <- function(gtfs, write_to_gtfs = FALSE) {
   calendar_info <-
     gtfs$calendar %>%
     dplyr::mutate(day_type_cal =
-                    case_when(monday + tuesday + wednesday + thursday + friday == 5 ~ "Weekday",
+                    dplyr::case_when(monday + tuesday + wednesday + thursday + friday == 5 ~ "Weekday",
                               saturday == 1 ~ "Saturday",
                               sunday == 1 ~ "Sunday"),
                   day_type_text =
-                    case_when(str_detect(service_id, "Weekday") ~ "Weekday",
-                              str_detect(service_id, "Saturday") ~ "Saturday",
-                              str_detect(service_id, "Sunday") ~ "Sunday"),
+                    dplyr::case_when(stringr::str_detect(service_id, "Weekday") ~ "Weekday",
+                              stringr::str_detect(service_id, "Saturday") ~ "Saturday",
+                              stringr::str_detect(service_id, "Sunday") ~ "Sunday"),
                   .after = service_id)
 
   calendar_info <-
@@ -31,11 +31,11 @@ gtfs_calendar_info <- function(gtfs, write_to_gtfs = FALSE) {
     warning("Disagreement between methods of determining day type")
   }
 
-  if(is_null(gtfs$calendar_attributes)) {
+  if(rlang::is_null(gtfs$calendar_attributes)) {
 
     calendar_info <-
       calendar_info %>%
-      dplyr::mutate(day_type = coalesce(day_type_cal, day_type_text), .after = day_type_text) %>%
+      dplyr::mutate(day_type = dplyr::coalesce(day_type_cal, day_type_text), .after = day_type_text) %>%
       dplyr::select(-c(day_type_cal, day_type_text))
 
     if(write_to_gtfs){
@@ -51,7 +51,7 @@ gtfs_calendar_info <- function(gtfs, write_to_gtfs = FALSE) {
       gtfs$calendar_attributes %>%
       dplyr::select(service_id, service_description, service_schedule_name,  service_schedule_typicality, day_type_attr = service_schedule_type)
 
-    calendar_info <- left_join(calendar_info, cal_attr, by = "service_id") %>% relocate(day_type_attr, .after = day_type_text)
+    calendar_info <- dplyr::left_join(calendar_info, cal_attr, by = "service_id") %>% dplyr::relocate(day_type_attr, .after = day_type_text)
 
     if(calendar_info %>% dplyr::filter(day_type_cal != day_type_attr) %>% magrittr::use_series(service_id) %>% length() != 0) {
       warn_service_ids <- calendar_info %>% dplyr::filter(day_type_cal != day_type_attr) %>% magrittr::use_series(service_id)
@@ -61,7 +61,7 @@ gtfs_calendar_info <- function(gtfs, write_to_gtfs = FALSE) {
 
     calendar_info <-
       calendar_info %>%
-      dplyr::mutate(day_type = coalesce(day_type_cal, day_type_attr, day_type_text), .after = day_type_text) %>%
+      dplyr::mutate(day_type = dplyr::coalesce(day_type_cal, day_type_attr, day_type_text), .after = day_type_text) %>%
       dplyr::select(service_id, day_type, ends_with("date"), totdays, service_description, service_schedule_name, service_schedule_typicality)
 
 
