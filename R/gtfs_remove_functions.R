@@ -146,7 +146,7 @@ remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
 
   # join route_ids from both
   route_comparison <-
-    dplyr::full_join(.data$distinct_routes, .data$trips_by_route, by = "route_id") %>%
+    dplyr::full_join(distinct_routes, trips_by_route, by = "route_id") %>%
     dplyr::mutate(route_in_routes = tidyr::replace_na(.data$route_in_routes, FALSE))
 
   # throw error if there are route_ids in trips that have no info in routes
