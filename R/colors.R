@@ -30,7 +30,7 @@ opmi_colors <-
 #' If no colors are provided, the entire list of colors will be returned.
 #'
 #'
-#' @return
+#' @return One or multiple color hex values
 #' @export
 #'
 #' @examples

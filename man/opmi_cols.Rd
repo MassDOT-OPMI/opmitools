@@ -15,7 +15,7 @@ or MBTA color scheme
 If no colors are provided, the entire list of colors will be returned.}
 }
 \value{
-
+One or multiple color hex values
 }
 \description{
 A function to provide hex values for colors in the OPMI color palette
