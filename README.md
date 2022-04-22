@@ -149,7 +149,7 @@ library(tidyverse) # load & attach tidyverse for data wrangling with dplyr and p
 
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
-Then, we could add the OPMI theme with `theme_opmi()`:
+Then, we can add the OPMI theme with `theme_opmi()`:
 
 ``` r
 (ridership_plot <-

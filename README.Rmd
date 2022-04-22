@@ -18,14 +18,15 @@ options(scipen = 999)
 # opmitools
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 `opmitools` serves 3 primary purposes:
 
-1. Functions for cleaning and merging GTFS files (building on [`tidytransit`](https://github.com/r-transit/tidytransit))
-2. Presenting data consistent with OPMI's Office Theme (building on [`ggplot2`](https://ggplot2.tidyverse.org/)) 
-    1. This part of the package draws on "[Creating corporate colour palettes for ggplot2](https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2)"
-3. Access to common reference tables
+1.  Functions for cleaning and merging GTFS files (building on [`tidytransit`](https://github.com/r-transit/tidytransit))
+2.  Presenting data consistent with OPMI's Office Theme (building on [`ggplot2`](https://ggplot2.tidyverse.org/))
+    1.  This part of the package draws on "[Creating corporate colour palettes for ggplot2](https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2)"
+3.  Access to common reference tables
 
 ## Installation
 
@@ -41,7 +42,6 @@ And load/attach opmitools as you would any other package with:
 ```{r}
 library(opmitools)
 ```
-
 
 ## Usage
 
@@ -71,7 +71,6 @@ paste0("Route count prior to removal: ", route_count_pre)
 paste0("Route count after removal: ", route_count_post)
 ```
 
-
 Other use cases might include getting some useful information out of the `calendar.txt` file:
 
 ```{r}
@@ -97,7 +96,7 @@ library(tidyverse) # load & attach tidyverse for data wrangling with dplyr and p
     geom_col(position = position_dodge()))
 ```
 
-Then, we could add the OPMI theme with `theme_opmi()`:
+Then, we can add the OPMI theme with `theme_opmi()`:
 
 ```{r}
 (ridership_plot <-
@@ -112,5 +111,3 @@ And use colors that make sense with `scale_fill_opmi()`:
 ridership_plot +
   scale_fill_opmi(palette = "rt", guide = "none")
 ```
-
-
