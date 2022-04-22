@@ -111,3 +111,19 @@ And use colors that make sense with `scale_fill_opmi()`:
 ridership_plot +
   scale_fill_opmi(palette = "rt", guide = "none")
 ```
+
+
+### Included Data
+
+`opmitools` contains several reference tables that may be useful, including a table describing the MBTA service area:
+
+```{r}
+head(mbta_service_area)
+```
+
+And frequently used demographic information by MA block group:
+
+```{r}
+head(mabgs_19)
+```
+

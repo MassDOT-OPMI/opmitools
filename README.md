@@ -168,3 +168,38 @@ ridership_plot +
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+### Included Data
+
+`opmitools` contains several reference tables that may be useful,
+including a table describing the MBTA service area:
+
+``` r
+head(mbta_service_area)
+#> # A tibble: 6 x 3
+#>   muni_name mbta65 mbta175
+#>   <chr>     <lgl>  <lgl>  
+#> 1 Arlington TRUE   TRUE   
+#> 2 Bedford   TRUE   TRUE   
+#> 3 Belmont   TRUE   TRUE   
+#> 4 Beverly   TRUE   TRUE   
+#> 5 Boston    TRUE   TRUE   
+#> 6 Braintree TRUE   TRUE
+```
+
+And frequently used demographic information by MA block group:
+
+``` r
+head(mabgs_19)
+#> # A tibble: 6 x 14
+#>   GEOID          pop minopop tothh li45hh li50hh limenghh   MHHI lownocarhh
+#>   <chr>        <dbl>   <dbl> <dbl>  <dbl>  <dbl>    <dbl>  <dbl>      <dbl>
+#> 1 250173173012   571     231   228     38     46        0  73000       17.7
+#> 2 250173531012  1270     610   327     73     73        0 132750      227. 
+#> 3 250173222002  2605     290  1064    254    281       98 113800      149. 
+#> 4 250251101035  1655     578   560     88     88       11 133636      220. 
+#> 5 250251101032   659     501   234    113    156       30  45370       92.0
+#> 6 250250603011  1452     246   700    177    193       26 130645      227. 
+#> # ... with 5 more variables: foreignbornres <dbl>, minopct <dbl>,
+#> #   li45pct <dbl>, li50pct <dbl>, lownocarpct <dbl>
+```
