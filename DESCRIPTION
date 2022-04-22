@@ -23,6 +23,7 @@ Imports:
     sysfonts,
     tibble,
     tidyr,
+    tidyselect,
     tidytransit
 Depends: 
     R (>= 2.10)

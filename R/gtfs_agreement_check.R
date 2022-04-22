@@ -20,7 +20,7 @@ gtfs_agreement_check <- function(gtfs) {
   # create output table
   agreement_check_tibble <-
     tibble::tibble(trip_id = trips_trips, trips_trips = trips_trips) %>%
-    dplyr::full_join(tibble(trip_id = stop_times_trips, stop_times_trips = stop_times_trips),
+    dplyr::full_join(tibble::tibble(trip_id = stop_times_trips, stop_times_trips = stop_times_trips),
                      by = "trip_id") %>%
     dplyr:: filter(trips_trips != stop_times_trips | is.na(trips_trips) | is.na(stop_times_trips))
 

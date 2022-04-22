@@ -25,8 +25,8 @@ gtfs_merge <- function(gtfs1, gtfs2) {
   gtfs$trips <- dplyr::bind_rows(gtfs1$trips, gtfs2$trips) %>% dplyr::distinct()
 
   # if there is a calendar attributes in both files, merge that as well and then return, otherwise just return
-  if(!is_null(gtfs1$calendar_attributes) & !is_null(gtfs2$calendar_attributes)) {
-    gtfs$calendar_attributes <- dplyr::bind_rows(gtfs1$calendar_attributes, gtfs2$calendar_attributes) %>% distinct()
+  if(!rlang::is_null(gtfs1$calendar_attributes) & !rlang::is_null(gtfs2$calendar_attributes)) {
+    gtfs$calendar_attributes <- dplyr::bind_rows(gtfs1$calendar_attributes, gtfs2$calendar_attributes) %>% dplyr::distinct()
     gtfs <- gtfs %>% magrittr::extract(c("agency", "calendar", "calendar_attributes", "routes", "shapes", "stop_times", "stops", "trips"))
     gtfs
   } else {
