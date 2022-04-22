@@ -29,7 +29,7 @@ gtfs_calendar_info <- function(gtfs, write_to_gtfs = FALSE) {
     dplyr::mutate(totdays = .data$end_date - .data$start_date + 1)
 
   if(calendar_info %>% dplyr::filter(.data$day_type_cal != .data$day_type_text) %>%
-     magrittr::use_series(.data$service_id) %>% length() != 0) {
+     magrittr::use_series(service_id) %>% length() != 0) {
     warning("Disagreement between methods of determining day type")
   }
 
@@ -60,8 +60,8 @@ gtfs_calendar_info <- function(gtfs, write_to_gtfs = FALSE) {
     calendar_info <- dplyr::left_join(calendar_info, cal_attr, by = "service_id") %>%
       dplyr::relocate(.data$day_type_attr, .after = .data$day_type_text)
 
-    if(calendar_info %>% dplyr::filter(.data$day_type_cal != .data$day_type_attr) %>% magrittr::use_series(.data$service_id) %>% length() != 0) {
-      warn_service_ids <- calendar_info %>% dplyr::filter(.data$day_type_cal != .data$day_type_attr) %>% magrittr::use_series(.data$service_id)
+    if(calendar_info %>% dplyr::filter(.data$day_type_cal != .data$day_type_attr) %>% magrittr::use_series(service_id) %>% length() != 0) {
+      warn_service_ids <- calendar_info %>% dplyr::filter(.data$day_type_cal != .data$day_type_attr) %>% magrittr::use_series(service_id)
       message(paste0("Disagreement between methods of determining day type in service_id: ", warn_service_ids,
                      collapse = "\n"))
     }

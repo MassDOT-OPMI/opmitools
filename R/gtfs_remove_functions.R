@@ -38,7 +38,7 @@ remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
   undefined_stops <-
     used_stop_counts %>%
     dplyr::filter(!(.data$stop_id %in% distinct_stops$stop_id)) %>%
-    magrittr::use_series(.data$stop_id)
+    magrittr::use_series(stop_id)
 
   if(length(undefined_stops) > 0) {
     stop(paste0("There are stops in stop_times.txt that lack definition in stops.txt.\n  The following stops lack definition: ",
@@ -55,7 +55,7 @@ remove_unused_stops <- function(gtfs, retain_stops = FALSE) {
   unused_stops <-
     stop_summary %>%
     dplyr::filter(is.na(.data$trip_stops)) %>%
-    magrittr::use_series(.data$stop_id)
+    magrittr::use_series(stop_id)
 
   # if retaining stops, write the unused stops to stops_unused
   if(retain_stops) {
@@ -94,7 +94,7 @@ remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
   undefined_shapes <-
     used_shape_counts %>%
     dplyr::filter(!(.data$shape_id %in% distinct_shapes$shape_id)) %>%
-    magrittr::use_series(.data$shape_id)
+    magrittr::use_series(shape_id)
 
 
   if(length(undefined_shapes) > 0) {
@@ -112,7 +112,7 @@ remove_unused_shapes <- function(gtfs, retain_shapes = FALSE) {
   unused_shapes <-
     shape_summary %>%
     dplyr::filter(is.na(.data$trip_count)) %>%
-    magrittr::use_series(.data$shape_id)
+    magrittr::use_series(shape_id)
 
   # if retaining shapes, write unused shapes to shapes_unused
   if (retain_shapes) {
@@ -150,13 +150,13 @@ remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
     dplyr::mutate(route_in_routes = tidyr::replace_na(.data$route_in_routes, FALSE))
 
   # throw error if there are route_ids in trips that have no info in routes
-  stopifnot(route_comparison %>% dplyr::filter(!.data$route_in_routes) %>% magrittr::use_series(.data$route_id) %>% length() == 0)
+  stopifnot(route_comparison %>% dplyr::filter(!.data$route_in_routes) %>% magrittr::use_series(route_id) %>% length() == 0)
 
   # create list of unused routes
   unused_routes <-
     route_comparison %>%
     dplyr::filter(is.na(.data$trips)) %>%
-    magrittr::use_series(.data$route_id)
+    magrittr::use_series(route_id)
 
   # if retaining unused routes, put them in routes_unused
   if(retain_routes) {
@@ -198,14 +198,14 @@ remove_unused_service <- function(gtfs, retain_service = FALSE) {
   # throw error for undefined service ids
   stopifnot(service_id_comparison %>%
               dplyr::filter(!.data$defined_in_calendar) %>%
-              magrittr::use_series(.data$service_id) %>%
+              magrittr::use_series(service_id) %>%
               length() == 0)
 
   # list of unused service ids
   unused_service_ids <-
     service_id_comparison %>%
     dplyr::filter(is.na(.data$trips)) %>%
-    magrittr::use_series(.data$service_id)
+    magrittr::use_series(service_id)
 
   # if retaining service ids, add to calendar_unused
   if(retain_service) {
