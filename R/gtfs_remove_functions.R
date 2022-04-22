@@ -142,7 +142,7 @@ remove_unused_routes <- function(gtfs, retain_routes = FALSE) {
   # list of route_ids in routes
   distinct_routes <-
     gtfs$routes %>%
-    dplyr::transmute(route_id, route_in_routes = TRUE)
+    dplyr::transmute(.data$route_id, route_in_routes = TRUE)
 
   # join route_ids from both
   route_comparison <-
