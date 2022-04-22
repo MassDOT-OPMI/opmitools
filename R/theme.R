@@ -11,6 +11,7 @@
 #'
 #' @return A theme that can be used in ggplots.
 #' @export
+#' @import ggplot2
 theme_opmi  <- function(base_size = 12,
                         base_font = "Open Sans",
                         base_family = "opensans") {
@@ -67,7 +68,7 @@ theme_opmi  <- function(base_size = 12,
 #' @return Saves a plot to a file.
 #' @export
 #'
-opmi_ggsave <- function(filename, plot = last_plot(), device = NULL,
+opmi_ggsave <- function(filename, plot = ggplot2::last_plot(), device = NULL,
                         path = NULL, scale = 1, width = NA, height = NA,
                         units = c("in", "cm", "mm", "px"), dpi = 96,
                         limitsize = TRUE, bg = NULL,

@@ -69,6 +69,8 @@ opmi_palettes <-
 #' @param monocol If `mono` = TRUE, which color to use for palette
 #' @param ... Additional arguments passed to `colorRampPalette`
 #'
+#' @importFrom methods as
+#' @importFrom grDevices colorRampPalette
 #' @return A function that can be used by `scale_fill_opmi` and `scale_color_opmi`
 #' @export
 #'
@@ -138,6 +140,7 @@ opmi_pal <-
 #' @export
 #'
 #' @name scale_fill_opmi
+#' @importFrom ggplot2 discrete_scale scale_color_gradientn scale_color_gradient2
 scale_fill_opmi <- function(palette = "main", discrete = TRUE, reverse = FALSE,
                             diverging = (palette %in% c("diverging", "diverging2")),
                             mono = FALSE, monocol = "orange",
