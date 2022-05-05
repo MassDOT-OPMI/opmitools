@@ -167,6 +167,7 @@ scale_fill_opmi <- function(palette = "main", discrete = TRUE, reverse = FALSE,
 
 
 #' @rdname scale_fill_opmi
+#' @export
 scale_color_opmi <- function(palette = "main", discrete = TRUE, reverse = FALSE,
                              diverging = (palette %in% c("diverging", "diverging2")),
                              mono = FALSE, monocol = "orange",
