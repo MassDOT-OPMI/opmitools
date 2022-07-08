@@ -26,7 +26,7 @@ scale_color_opmi(
 )
 }
 \arguments{
-\item{palette}{One of "main", "diverging", "diverging2", or "rt"}
+\item{palette}{One of "main", "massdot", "diverging", "diverging2", or "rt"}
 
 \item{discrete}{Logical, whether palette is for discrete scale}
 

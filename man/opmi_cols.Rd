@@ -9,9 +9,11 @@ opmi_cols(...)
 \arguments{
 \item{...}{One or multiple colors from the OPMI color palette
 ("orange", "petrolblue", "coralred", "seafoam", "skyblue", "deeppurple",
-"cream", or "midgrey")
+"cream", "midgrey", or "khaki"),
+MassDOT color palette
+("dotprimary", "dotsecondary", or "dottertiary"),
 or MBTA color scheme
-("rl", "ol", "gl", "bl", "bus", "ferry", "cr", "sl", "ride").
+("rl", "ol", "gl", "bl", "bus", "ferry", "cr", "sl", "ride", or "subway").
 If no colors are provided, the entire list of colors will be returned.}
 }
 \value{

@@ -7,6 +7,10 @@ opmi_colors <-
     opmi_deeppurple = "#432533",
     opmi_cream = "#FFFCF0",
     opmi_midgrey = "#E6E9EB",
+    opmi_khaki = "#E0E3B4",
+    opmi_dotprimary = "#0C5293",
+    opmi_dotsecondary = "#1D7CC0",
+    opmi_dottertiary = "#4FAC48",
     opmi_rl = "#DA291C",
     opmi_ol = "#ED8B00",
     opmi_gl = "#00843D",
@@ -15,7 +19,8 @@ opmi_colors <-
     opmi_ferry = "#008EAA",
     opmi_cr = "#80276C",
     opmi_sl = "#7C878E",
-    opmi_ride = "#52BBc5")
+    opmi_ride = "#52BBc5",
+    opmi_subway = "#4A4F5C")
 
 #' OPMI Colors
 #'
@@ -24,9 +29,11 @@ opmi_colors <-
 #'
 #' @param ... One or multiple colors from the OPMI color palette
 #' ("orange", "petrolblue", "coralred", "seafoam", "skyblue", "deeppurple",
-#' "cream", or "midgrey")
+#' "cream", "midgrey", or "khaki"),
+#' MassDOT color palette
+#' ("dotprimary", "dotsecondary", or "dottertiary"),
 #' or MBTA color scheme
-#' ("rl", "ol", "gl", "bl", "bus", "ferry", "cr", "sl", "ride").
+#' ("rl", "ol", "gl", "bl", "bus", "ferry", "cr", "sl", "ride", or "subway").
 #' If no colors are provided, the entire list of colors will be returned.
 #'
 #'
@@ -49,6 +56,7 @@ opmi_cols <-
 
 opmi_palettes <-
   list(main = opmi_cols("orange", "petrolblue", "coralred", "seafoam", "skyblue", "deeppurple"),
+       massdot = opmi_cols("dotprimary", "dotsecondary", "dottertiary"),
        diverging = opmi_cols("petrolblue", "orange"),
        diverging2 = opmi_cols("seafoam", "coralred"),
        rt = opmi_cols("rl", "ol", "gl", "bl"))
@@ -62,7 +70,7 @@ opmi_palettes <-
 #' Can also be used to create manual color/fill palettes for `scale_color_manual`
 #' and `scale_fill_manual`.
 #'
-#' @param palette One of "main", "diverging", "diverging2", or "rt"
+#' @param palette One of "main", "massdot", "diverging", "diverging2", or "rt"
 #' @param reverse Logical, whether to reverse palette
 #' @param discrete Logical, whether palette is for discrete scale
 #' @param mono Logical, whether to use a single-color palette

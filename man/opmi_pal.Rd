@@ -14,7 +14,7 @@ opmi_pal(
 )
 }
 \arguments{
-\item{palette}{One of "main", "diverging", "diverging2", or "rt"}
+\item{palette}{One of "main", "massdot", "diverging", "diverging2", or "rt"}
 
 \item{reverse}{Logical, whether to reverse palette}
 
