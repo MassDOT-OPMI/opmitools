@@ -124,11 +124,11 @@ opmi_pal <-
         unlist(unname(pal[1:n]))
       }
     } else if (!discrete & !diverging & !mono) {
-      colorRampPalette(pal, space = "Lab", ...)
+      colorRampPalette(pal, space = "Lab")
     } else if (diverging & !mono) {
       colorRampPalette(c(pal[1],
                          opmi_cols("midgrey"),
-                         pal[2]), space = "Lab", ...)
+                         pal[2]), space = "Lab")
     } else if (discrete & mono) {
       function(n  = 5) {
         colorspace::sequential_hcl(n, h1 = hue, cmax = chr, l1 = lux, rev = reverse)
