@@ -48,13 +48,13 @@ gtfs_merge <- function(gtfs1, gtfs2) {
 
 
   if (!rlang::is_null(gtfs$calendar_attributes) & !is_null(gtfs$multi_route_trips)) {
-    gtfs["agency", "calendar", "calendar_attributes", "multi_route_trips", "routes", "shapes", "stop_times", "stops", "trips"]
+    gtfs[c("agency", "calendar", "calendar_attributes", "multi_route_trips", "routes", "shapes", "stop_times", "stops", "trips")]
   } else if (!rlang::is_null(gtfs$calendar_attributes) & is_null(gtfs$multi_route_trips)) {
-    gtfs["agency", "calendar", "calendar_attributes", "routes", "shapes", "stop_times", "stops", "trips"]
+    gtfs[c("agency", "calendar", "calendar_attributes", "routes", "shapes", "stop_times", "stops", "trips")]
   } else if (rlang::is_null(gtfs$calendar_attributes) & !is_null(gtfs$multi_route_trips)) {
-    gtfs["agency", "calendar", "multi_route_trips", "routes", "shapes", "stop_times", "stops", "trips"]
+    gtfs[c("agency", "calendar", "multi_route_trips", "routes", "shapes", "stop_times", "stops", "trips")]
   } else {
-    gtfs["agency", "calendar", "routes", "shapes", "stop_times", "stops", "trips"]
+    gtfs[c("agency", "calendar", "routes", "shapes", "stop_times", "stops", "trips")]
   }
 
 }
