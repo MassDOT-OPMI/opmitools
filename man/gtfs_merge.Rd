@@ -19,3 +19,8 @@ A GTFS file reflecting services stored in \code{gtfs1} and \code{gtfs2}
 files into R, try using \code{\link{read_mbta_gtfs}} or
 \code{\link[tidytransit]{read_gtfs}}.
 }
+\details{
+This function is set up to merge the following files: \code{agency.txt}, \code{calendar.txt},
+\code{calendar_attributes.txt}, \code{multi_route_trips.txt}, \code{routes.txt}, \code{shapes.txt}, \code{stop_times.txt},
+\code{stops.txt}, \code{trips.txt}
+}
