@@ -34,7 +34,7 @@ You can install the development version of opmitools from [GitHub](https://githu
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("kmeakinmbta/opmitools")
+devtools::install_github("MassDOT-OPMI/opmitools")
 ```
 
 And load/attach opmitools as you would any other package with:

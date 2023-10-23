@@ -24,7 +24,7 @@ You can install the development version of opmitools from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("kmeakinmbta/opmitools")
+devtools::install_github("MassDOT-OPMI/opmitools")
 ```
 
 And load/attach opmitools as you would any other package with:
@@ -56,41 +56,61 @@ or `stop_times.txt`). You can check for extraneous components with
 ``` r
 gtfs_removal_check(mbta_gtfs)
 #> $routes_unused
-#> # A tibble: 48 x 13
-#>    route_id   agency_id route_short_name route_long_name   route_desc route_type
-#>    <chr>      <chr>     <chr>            <chr>             <chr>           <int>
-#>  1 CR-Foxboro 1         ""               Foxboro Event Se~ Commuter ~          2
-#>  2 72         1         "72"             Aberdeen Avenue ~ Local Bus           3
-#>  3 79         1         "79"             Arlington Height~ Local Bus           3
-#>  4 84         1         "84"             Arlmont Village ~ Commuter ~          3
-#>  5 136        1         "136"            Reading Depot - ~ Local Bus           3
-#>  6 170        1         "170"            Waltham Center -~ Commuter ~          3
-#>  7 195        1         "195"            Lemuel Shattuck ~ Supplemen~          3
-#>  8 212        1         "212"            Quincy Center St~ Commuter ~          3
-#>  9 214        1         "214"            Germantown - Qui~ Local Bus           3
-#> 10 221        1         "221"            Fort Point - Qui~ Commuter ~          3
-#> # ... with 38 more rows, and 7 more variables: route_url <chr>,
-#> #   route_color <chr>, route_text_color <chr>, route_sort_order <int>,
-#> #   route_fare_class <chr>, line_id <chr>, listed_route <chr>
+#> # A tibble: 31 × 14
+#>    route_id      agenc…¹ route…² route…³ route…⁴ route…⁵ route…⁶ route…⁷ route…⁸
+#>    <chr>         <chr>   <chr>   <chr>   <chr>     <int> <chr>   <chr>   <chr>  
+#>  1 195           1       195     "Lemue… Supple…       3 "https… FFC72C  000000 
+#>  2 Shuttle-Gene… 1       Shuttle ""      Rail R…       3 ""      FFC72C  000000 
+#>  3 Shuttle-Gene… 1       Blue L… ""      Rail R…       3 ""      FFC72C  000000 
+#>  4 Shuttle-Gene… 1       Commut… ""      Rail R…       3 ""      FFC72C  000000 
+#>  5 Shuttle-Gene… 1       North … ""      Rail R…       3 ""      FFC72C  000000 
+#>  6 Shuttle-Gene… 1       South … ""      Rail R…       3 ""      FFC72C  000000 
+#>  7 Shuttle-Gene… 1       Elevat… ""      Rail R…       3 ""      FFC72C  000000 
+#>  8 Shuttle-Gene… 1       Fairmo… ""      Rail R…       3 ""      FFC72C  000000 
+#>  9 Shuttle-Gene… 1       Fitchb… ""      Rail R…       3 ""      FFC72C  000000 
+#> 10 Shuttle-Gene… 1       Frankl… ""      Rail R…       3 ""      FFC72C  000000 
+#> # … with 21 more rows, 5 more variables: route_sort_order <int>,
+#> #   route_fare_class <chr>, line_id <chr>, listed_route <chr>,
+#> #   network_id <chr>, and abbreviated variable names ¹​agency_id,
+#> #   ²​route_short_name, ³​route_long_name, ⁴​route_desc, ⁵​route_type, ⁶​route_url,
+#> #   ⁷​route_color, ⁸​route_text_color
+#> 
+#> $shapes_unused
+#> # A tibble: 2,053 × 5
+#>    shape_id shape_pt_lat shape_pt_lon shape_pt_sequence shape_dist_traveled
+#>    <chr>           <dbl>        <dbl>             <int>               <dbl>
+#>  1 pull0141         42.3        -71.1             10001                  NA
+#>  2 pull0141         42.3        -71.1             10002                  NA
+#>  3 pull0141         42.3        -71.1             10003                  NA
+#>  4 pull0141         42.3        -71.1             10004                  NA
+#>  5 pull0141         42.3        -71.1             10005                  NA
+#>  6 pull0141         42.3        -71.1             10006                  NA
+#>  7 pull0141         42.3        -71.1             10007                  NA
+#>  8 pull0141         42.3        -71.1             10008                  NA
+#>  9 pull0141         42.3        -71.1             10009                  NA
+#> 10 pull0141         42.3        -71.1             10010                  NA
+#> # … with 2,043 more rows
 #> 
 #> $stops_unused
-#> # A tibble: 2,366 x 19
-#>    stop_id stop_code stop_name stop_desc platform_code stop_lat stop_lon zone_id
-#>    <chr>   <chr>     <chr>     <chr>     <chr>            <dbl>    <dbl> <chr>  
-#>  1 31258   "31258"   88 Black~ "88 Blac~ ""                42.3    -71.0 ""     
-#>  2 place-~ ""        Wareham ~ ""        ""                41.8    -70.7 "CF-zo~
-#>  3 CM-049~ ""        Wareham ~ "Wareham~ "1"               41.8    -70.7 "CF-zo~
-#>  4 place-~ ""        Buzzards~ ""        ""                41.7    -70.6 "CF-zo~
-#>  5 CM-054~ ""        Buzzards~ "Buzzard~ "1"               41.7    -70.6 "CF-zo~
-#>  6 place-~ ""        Bourne    ""        ""                41.7    -70.6 "CF-zo~
-#>  7 CM-056~ ""        Bourne    "Bourne ~ "1"               41.7    -70.6 "CF-zo~
-#>  8 place-~ ""        Hyannis   ""        ""                41.7    -70.3 "CF-zo~
-#>  9 CM-079~ ""        Hyannis   "Hyannis~ "1"               41.7    -70.3 "CF-zo~
-#> 10 place-~ ""        Readville ""        ""                42.2    -71.1 "CR-zo~
-#> # ... with 2,356 more rows, and 11 more variables: stop_url <chr>,
-#> #   level_id <chr>, location_type <int>, parent_station <chr>,
-#> #   wheelchair_boarding <int>, platform_name <chr>, stop_address <chr>,
-#> #   municipality <chr>, on_street <chr>, at_street <chr>, vehicle_type <chr>
+#> # A tibble: 2,349 × 19
+#>    stop_id       stop_…¹ stop_…² stop_…³ platf…⁴ stop_…⁵ stop_…⁶ zone_id stop_…⁷
+#>    <chr>         <chr>   <chr>   <chr>   <chr>     <dbl>   <dbl> <chr>   <chr>  
+#>  1 Boat-George   ""      George… "Georg… ""         42.3   -70.9 Boat-G… https:…
+#>  2 Boat-Long-So… ""      Long W… "Long … "4"        42.4   -71.0 Boat-L… https:…
+#>  3 place-CM-0493 ""      Wareha… ""      ""         41.8   -70.7 CF-zon… https:…
+#>  4 place-CM-0547 ""      Buzzar… ""      ""         41.7   -70.6 CF-zon… https:…
+#>  5 place-CM-0564 ""      Bourne  ""      ""         41.7   -70.6 CF-zon… https:…
+#>  6 place-CM-0790 ""      Hyannis ""      ""         41.7   -70.3 CF-zon… https:…
+#>  7 place-DB-0095 ""      Readvi… ""      ""         42.2   -71.1 CR-zon… https:…
+#>  8 DB-0095       ""      Readvi… "Readv… ""         42.2   -71.1 CR-zon… https:…
+#>  9 place-DB-2205 ""      Fairmo… ""      ""         42.3   -71.1 CR-zon… https:…
+#> 10 DB-2205       ""      Fairmo… "Fairm… ""         42.3   -71.1 CR-zon… https:…
+#> # … with 2,339 more rows, 10 more variables: level_id <chr>,
+#> #   location_type <int>, parent_station <chr>, wheelchair_boarding <int>,
+#> #   platform_name <chr>, stop_address <chr>, municipality <chr>,
+#> #   on_street <chr>, at_street <chr>, vehicle_type <chr>, and abbreviated
+#> #   variable names ¹​stop_code, ²​stop_name, ³​stop_desc, ⁴​platform_code,
+#> #   ⁵​stop_lat, ⁶​stop_lon, ⁷​stop_url
 ```
 
 And remove those components with `gtfs_remove_all()`:
@@ -100,9 +120,9 @@ route_count_pre <- length(mbta_gtfs$routes$route_id)
 mbta_gtfs <- gtfs_remove_all(mbta_gtfs)
 route_count_post <- length(mbta_gtfs$routes$route_id)
 paste0("Route count prior to removal: ", route_count_pre)
-#> [1] "Route count prior to removal: 249"
+#> [1] "Route count prior to removal: 220"
 paste0("Route count after removal: ", route_count_post)
-#> [1] "Route count after removal: 201"
+#> [1] "Route count after removal: 189"
 ```
 
 Other use cases might include getting some useful information out of the
@@ -111,15 +131,15 @@ Other use cases might include getting some useful information out of the
 ``` r
 mbta_calendar_info <- gtfs_calendar_info(mbta_gtfs)
 head(mbta_calendar_info)
-#> # A tibble: 6 x 5
+#> # A tibble: 6 × 5
 #>   service_id             day_type start_date end_date   totdays
 #>   <chr>                  <chr>    <date>     <date>     <drtn> 
-#> 1 BUS222-hba22pt1-Wdy-02 <NA>     2022-04-18 2022-04-18 1 days 
-#> 2 BUS222-hba22sn1-Wdy-02 <NA>     2022-04-19 2022-04-22 4 days 
-#> 3 BUS222-hbb22ns1-Wdy-02 Weekday  2022-04-18 2022-04-22 5 days 
-#> 4 BUS222-hbc22ns1-Wdy-02 Weekday  2022-04-18 2022-04-22 5 days 
-#> 5 BUS222-hbf22ns1-Wdy-02 Weekday  2022-04-18 2022-04-22 5 days 
-#> 6 BUS222-hbg22ns1-Wdy-02 Weekday  2022-04-18 2022-04-22 5 days
+#> 1 BUS423-hbs43sf1-Wdy-02 <NA>     2023-11-24 2023-11-24  1 days
+#> 2 BUS423-hbs43sn1-Wdy-02 <NA>     2023-11-10 2023-11-10  1 days
+#> 3 BUS423-hbs43sp1-Wdy-02 <NA>     2023-11-20 2023-11-22  3 days
+#> 4 BUS423-hbs43sp6-Sa-02  Saturday 2023-11-18 2023-11-25  8 days
+#> 5 BUS423-hbs43sp7-Su-02  Sunday   2023-11-19 2023-11-26  8 days
+#> 6 BUS423-hbs43sw1-Wdy-02 Weekday  2023-10-11 2023-12-15 66 days
 ```
 
 Note that `opmitools` is not yet capable of handling GTFS-Pathways – it
@@ -176,7 +196,7 @@ including a table describing the MBTA service area:
 
 ``` r
 head(mbta_service_area)
-#> # A tibble: 6 x 3
+#> # A tibble: 6 × 3
 #>   muni_name mbta65 mbta175
 #>   <chr>     <lgl>  <lgl>  
 #> 1 Arlington TRUE   TRUE   
@@ -191,15 +211,15 @@ And frequently used demographic information by MA block group:
 
 ``` r
 head(mabgs_19)
-#> # A tibble: 6 x 14
-#>   GEOID          pop minopop tothh li45hh li50hh limenghh   MHHI lownocarhh
-#>   <chr>        <dbl>   <dbl> <dbl>  <dbl>  <dbl>    <dbl>  <dbl>      <dbl>
-#> 1 250173173012   571     231   228     38     46        0  73000       17.7
-#> 2 250173531012  1270     610   327     73     73        0 132750      227. 
-#> 3 250173222002  2605     290  1064    254    281       98 113800      149. 
-#> 4 250251101035  1655     578   560     88     88       11 133636      220. 
-#> 5 250251101032   659     501   234    113    156       30  45370       92.0
-#> 6 250250603011  1452     246   700    177    193       26 130645      227. 
-#> # ... with 5 more variables: foreignbornres <dbl>, minopct <dbl>,
-#> #   li45pct <dbl>, li50pct <dbl>, lownocarpct <dbl>
+#> # A tibble: 6 × 14
+#>   GEOID   pop minopop tothh li45hh li50hh limen…¹   MHHI lowno…² forei…³ minopct
+#>   <chr> <dbl>   <dbl> <dbl>  <dbl>  <dbl>   <dbl>  <dbl>   <dbl>   <dbl>   <dbl>
+#> 1 2501…   571     231   228     38     46       0  73000    17.7    64.9   0.405
+#> 2 2501…  1270     610   327     73     73       0 132750   227.    349.    0.480
+#> 3 2501…  2605     290  1064    254    281      98 113800   149.    425.    0.111
+#> 4 2502…  1655     578   560     88     88      11 133636   220.    569.    0.349
+#> 5 2502…   659     501   234    113    156      30  45370    92.0   227.    0.760
+#> 6 2502…  1452     246   700    177    193      26 130645   227.     71.1   0.169
+#> # … with 3 more variables: li45pct <dbl>, li50pct <dbl>, lownocarpct <dbl>, and
+#> #   abbreviated variable names ¹​limenghh, ²​lownocarhh, ³​foreignbornres
 ```
